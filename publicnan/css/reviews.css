@@ -1,0 +1,324 @@
+button,
+a {
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: Jura;
+  src: url(../font/Jura.ttf);
+}
+
+@font-face {
+  font-family: Orbitron;
+  src: url(../font/Orbitron.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.home_page {
+  background-color: black;
+  height: 100%;
+  font-family: Jura;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: black;
+  height: 100px;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  align-items: center;
+  padding: 0 155px;
+}
+
+header a {
+  font-family: Jura;
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+header a:not(:last-child) {
+  margin-right: 60px;
+}
+
+.content_home_page {
+  display: flex;
+  flex-direction: column;
+  padding: 124px 0px 74px 0px;
+  height: 100%;
+  font-family: Jura;
+}
+
+.title_home_page {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 29px;
+  background-color: #5A1010F7;
+  padding: 20px 0;
+}
+
+.desc_avatar {
+  width: 780px;
+  height: 152px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.reviews {
+  background-color: white;
+  width: 1120px;
+  height: 259px;
+  display: flex;
+  align-items: center;
+  padding: 0 54px;
+  justify-content: space-between;
+  margin-bottom: 81px;
+}
+
+.ava {
+  width: 152px;
+  height: 152px;
+  margin: 0;
+  padding: 0;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.reviews img {
+  margin-right: 82px;
+}
+
+.name {
+  font-size: 38px;
+  margin-bottom: 16px;
+}
+
+.text_reviews {
+  font-size: 18px;
+  margin-top: 16px;
+  color: #5A1010F7;
+}
+
+.block_reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+button {
+  width: 258px;
+  height: 69px;
+  background-color: #5A1010F7;
+  color: white;
+  font-family: Jura;
+  font-size: 20px;
+  border: none;
+  /* margin-right: 150px; */
+  /* align-self: flex-end; */
+}
+
+.btn {
+  background-color: black;
+  justify-content: flex-end;
+  padding: 0 0;
+  height: fit-content;
+  margin-bottom: 0;
+}
+
+/* ************************************************* */
+.submit {
+  width: 258px;
+  height: 69px;
+  background-color: rgba(90, 16, 16, 0.97);
+  font-size: 20px;
+  font-family: Jura;
+  color: white;
+  justify-content: flex-end;
+}
+
+/* .submit:hover {
+    cursor: pointer;
+    background-color: #4378ff7c;
+  } */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: #04283ce5;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: auto;
+  padding: 0;
+  border: 1px solid white;
+  width: 636px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.review_form {
+  width: 673px;
+  height: 100%;
+  background-color: rgba(217, 217, 217, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 90px 90px 100px 90px;
+  font-family: Jura;
+}
+
+.review_title_form {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 88px;
+}
+
+.review_title_form span {
+  color: rgba(90, 16, 16, 0.97);
+}
+
+.review_input {
+  border: none;
+  background-color: rgba(217, 217, 217, 1);
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  margin-bottom: 40px;
+  outline: none;
+  font-size: 20px;
+}
+
+::placeholder {
+  font-family: Jura;
+  color: black;
+  opacity: .3;
+}
+
+.review_form img {
+  width: 266px;
+}
+
+.review_form button {
+  width: 258px;
+  height: 69px;
+  background-color: rgba(90, 16, 16, 0.97);
+  color: white;
+  font-size: 20px;
+  font-family: Jura;
+  border-radius: 10px;
+  border: none;
+}
+
+.review_form a {
+  margin: 47px auto 0 auto;
+}
+
+/* *************************************************** */
+footer {
+  font-family: Jura;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 165px;
+  height: 260px;
+  border-radius: 20px 20px 0 0;
+  background-color: white;
+  width: 100%;
+}
+
+footer .logo {
+  font-size: 24px;
+}
+
+.sub_menu {
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+}
+
+.line {
+  height: 190px;
+  border: 2px solid rgba(90, 16, 16, 0.97);
+  margin: 0 20px;
+}
+
+.left_menu {
+  text-align: right;
+}
+
+.wrapper {
+  background-color: black;
+}

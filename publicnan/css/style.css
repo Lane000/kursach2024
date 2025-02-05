@@ -1,0 +1,291 @@
+button,
+a {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: Jura;
+    src: url(../font/Jura.ttf);
+}
+
+@font-face {
+    font-family: Orbitron;
+    src: url(../font/Orbitron.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    height: 100%;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.home_page {
+    background-color: black;
+    height: 100%;
+    font-family: Jura;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    color: black;
+    height: 100px;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
+    padding: 0 155px;
+}
+
+header a {
+    font-family: Jura;
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+header a:not(:last-child) {
+    margin-right: 60px;
+}
+
+.content_home_page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 150px;
+    height: 100vh;
+}
+
+.text_content {
+    color: white;
+}
+
+.title_home_page {
+    font-size: 64px;
+    width: 90%;
+    margin-bottom: 44px;
+}
+
+.title_home_page span {
+    color: rgba(90, 16, 16, 0.97);
+}
+
+.sub_title_home_page {
+    font-size: 32px;
+    width: 80%;
+    margin-bottom: 71px;
+}
+
+.text_content button {
+    background-color: rgba(90, 16, 16, 0.97);
+    border-radius: 20px;
+    font-size: 24px;
+    color: white;
+    font-family: Jura;
+    padding: 25px 100px;
+    border: none;
+}
+
+.about_page {
+    font-family: Jura;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 150px;
+    align-items: center;
+    background-color: white;
+}
+
+.title_about_page {
+    color: rgba(90, 16, 16, 0.97);
+    font-size: 36px;
+    margin-bottom: 59px;
+}
+
+.desc_about_page {
+    font-size: 32px;
+    width: 80%;
+}
+
+.info {
+    background-color: black;
+    text-align: center;
+    min-width: 501px;
+}
+
+.text_info {
+    color: white;
+    font-size: 32px;
+    padding: 20px 80px;
+}
+
+.info span {
+    font-family: Orbitron;
+    font-size: 60px;
+    color: rgba(90, 16, 16, 0.97);
+
+}
+
+/* **************************************** */
+section {
+    font-family: Jura;
+    display: flex;
+    flex-direction: column;
+}
+
+.title_section {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 85px;
+}
+
+/* ************************************************** */
+.top_side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+    padding: 0 150px;
+    height: 305px;
+}
+
+.block_icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom_side {
+    display: flex;
+    height: 336px;
+    background-color: white;
+    padding: 61px 150px 34px 150px;
+    justify-content: space-between;
+}
+
+.desc_icon {
+    text-align: center;
+    color: rgba(90, 16, 16, 0.97);
+    font-size: 32px;
+    margin-top: 35px;
+}
+
+.contact_page {
+    padding: 204px 155px;
+    background-color: black;
+}
+
+.block_contact {
+    background-color: rgba(90, 16, 16, 0.97);
+    padding: 42px 70px 80px 70px;
+}
+
+.sub_block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_contact_page {
+    color: white;
+    text-align: center;
+    font-family: Jura;
+    font-size: 36px;
+    margin-bottom: 42px;
+}
+
+.application_form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    padding: 42px 70px;
+}
+
+.aplication_title_form {
+    text-align: center;
+    font-size: 32px;
+    font-family: Jura;
+    margin-bottom: 32px;
+}
+
+.aplication_form_input {
+    border: none;
+    margin-bottom: 32px;
+    font-family: Jura;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+
+.aplication_title_form span {
+    color: rgba(90, 16, 16, 0.97);
+}
+
+::placeholder {
+    font-size: 16px;
+    color: black;
+}
+
+
+.application_form button {
+    width: 195px;
+    height: 45px;
+    background-color: rgba(90, 16, 16, 0.97);
+    border-radius: 10px;
+    color: white;
+    font-family: Jura;
+    font-size: 16px;
+    margin: 24px auto;
+}
+
+footer {
+    font-family: Jura;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 165px;
+    height: 260px;
+    border-radius: 20px 20px 0 0;
+    background-color: white;
+    width: 100%;
+}
+
+footer .logo {
+    font-size: 24px;
+}
+
+.sub_menu {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+}
+
+.line {
+    height: 190px;
+    border: 2px solid rgba(90, 16, 16, 0.97);
+    margin: 0 20px;
+}
+
+.left_menu {
+    text-align: right;
+}
+
+.wrapper {
+    background-color: black;
+}

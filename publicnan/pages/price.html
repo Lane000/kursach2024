@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/price.css" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <title>Цены</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="home_page">
+      <header>
+        <a href="/">
+          <div class="logo">
+            <img src="../imgs/Group 41.svg" alt="" />
+            <p class="text_logo">Рекламная<br />компания А4</p>
+          </div>
+        </a>
+        <div class="menu">
+          <a href="/projects">проекты</a>
+          <a href="/projects#servis">услуги</a>
+          <a href="/price">цены</a>
+          <a href="/reviews">отзывы</a>
+          <a href="/#contact">контакты</a>
+          <img src="../imgs/user-logo.svg" alt="user-logo" class="user-logo">
+          <a href="#" id="login-link">Войти</a>
+          <span id="user-info" style="display: none;">
+            <span id="username"></span>
+            <a href="#" id="logout-link">Выйти</a>
+          </span>
+        </div>
+      </header>
+      <div class="content_home_page">
+        <p class="title_home_page">Цены</p>
+        <img src="../imgs/Group 11.jpg" alt="" />
+        <div class="blocks_price">
+          <div class="block">
+            <div class="title_price">
+              <p>
+                Тариф <br />
+                “Базовый”
+              </p>
+            </div>
+            <p class="desc_block">- анализ целевой аудитории</p>
+            <p class="desc_block">- создание 1 рекламного объявления</p>
+            <p class="desc_block">
+              - настройка и запуск рекламной кампании в одной социальной сети
+            </p>
+            <p class="desc_block">- ежемесячный отчет о результатах</p>
+            <button><b>10 тычяч/мес</b></button>
+          </div>
+          <div class="block">
+            <div class="title_price">
+              <p>Тариф<br />“Стандартный”</p>
+            </div>
+            <p class="desc_block">- все услуги Базового тарифа</p>
+            <p class="desc_block">- создание до 3 рекламных объявлений</p>
+            <p class="desc_block">
+              - настройка и запуск кампании в двух социальных сетях
+            </p>
+            <p class="desc_block">- оптимизация кампаний раз в две недели</p>
+            <p class="desc_block">
+              - поддержка по электронной почте и телефону
+            </p>
+            <button><b>25 тычяч/мес</b></button>
+          </div>
+          <div class="block">
+            <div class="title_price">
+              <p>Тариф<br />“Премиум”</p>
+            </div>
+            <p class="desc_block">- все услуги Стандартного тарифа</p>
+            <p class="desc_block">
+              - создание до 5 рекламных объявлений с A/B тестированием
+            </p>
+            <p class="desc_block">- запуск кампании в трех</p>
+            <p class="desc_block">
+              - еженедельная оптимизация и консультации
+            </p>
+            <p class="desc_block">- поддержка через мессенджеры</p>
+            <button><b>35 тычяч/мес</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <a href="../index.html">
+        <div class="logo">
+          <img src="../imgs/Group 41.svg" alt="" />
+          <p class="text_logo">Рекламная<br />компания А4</p>
+        </div>
+      </a>
+      <div class="sub_menu">
+        <div class="left_menu">
+          <a href="#about_comp">
+            <p>о компании</p>
+          </a>
+          <a href="/#contact">
+            <p style="margin: 11px 0;">контакты</p>
+          </a>
+          <a href="/reviews">
+            <p>отзывы</p>
+          </a>
+        </div>
+        <div class="line"></div>
+        <div class="right_menu">
+          <a href="/projects">
+            <p>проекты</p>
+          </a>
+          <a href="/projects#servis">
+            <p style="margin: 11px 0;">услуги</p>
+          </a>
+          <a href="/price">
+            <p>цены</p>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- Попап для авторизации и регистрации -->
+  <div id="auth-popup" class="auth-popup">
+    <div class="auth-popup-content">
+      <span class="auth-close-popup">&times;</span> <!-- Кнопка закрытия -->
+
+      <!-- Форма авторизации -->
+      <div id="auth-login-form" class="auth-form">
+        <h2 class="auth-form-title">Авторизация</h2>
+        <form id="auth-login" class="auth-form-container">
+          <input type="email" id="auth-login-email" class="auth-input" placeholder="Email" required>
+          <input type="password" id="auth-login-password" class="auth-input" placeholder="Пароль" required>
+          <button type="submit" class="auth-button">Войти</button>
+        </form>
+        <p class="auth-form-text">Нет аккаунта? <a href="#" id="auth-show-register"
+            class="auth-link">Зарегистрироваться</a></p>
+      </div>
+
+      <!-- Форма регистрации -->
+      <div id="auth-register-form" class="auth-form" style="display: none;">
+        <h2 class="auth-form-title">Регистрация</h2>
+        <form id="auth-register" class="auth-form-container">
+          <input type="text" id="auth-register-username" class="auth-input" placeholder="Имя пользователя" required>
+          <input type="email" id="auth-register-email" class="auth-input" placeholder="Email" required>
+          <input type="password" id="auth-register-password" class="auth-input" placeholder="Пароль" required>
+          <input type="password" id="auth-register-password-confirm" class="auth-input" placeholder="Повторите пароль"
+            required>
+          <div id="auth-register-error" class="auth-error-message" style="display: none;">Пароли не совпадают</div>
+          <button type="submit" class="auth-button">Зарегистрироваться</button>
+        </form>
+        <p class="auth-form-text">Есть аккаунт? <a href="#" id="auth-show-login" class="auth-link">Войти</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+
+</html>

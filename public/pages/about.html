@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="/css/index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -13,15 +13,13 @@
   <body>
     <header class="sticky-header">
       <div class="header-content">
-        <a href="index.html"
-          ><img src="img/logo-h.svg" alt="logo" class="logo"
-        /></a>
+        <a href="/"><img src="img/logo-h.svg" alt="logo" class="logo" /></a>
         <nav>
           <ul>
-            <li><a href="catalog.html">Автомобили</a></li>
+            <li><a href="/catalog">Автомобили</a></li>
             <li><a href="#">О компании</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-            <li><a href="lk.html">Личный кабинет</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+            <li><a href="/profile">Личный кабинет</a></li>
           </ul>
         </nav>
       </div>
@@ -74,33 +72,24 @@
               страхового случая.
             </p>
           </li>
-          <li class="about-benefits__item">
-            <div class="about-benefits__icon">📱</div>
-            <h3 class="about-benefits__item-title">Удобный сервис</h3>
-            <p class="about-benefits__description">
-              Простое бронирование онлайн, оперативная обработка заявок,
-              доставка автомобиля в удобное для вас место и круглосуточная
-              поддержка клиентов. Мы делаем все возможное, чтобы процесс аренды
-              был максимально удобным.
-            </p>
-          </li>
-          <li class="about-benefits__item">
-            <div class="about-benefits__icon">📄</div>
-            <h3 class="about-benefits__item-title">Прозрачные условия</h3>
-            <p class="about-benefits__description">
-              Никаких скрытых платежей и комиссий. Все условия аренды прописаны
-              в договоре. Мы ценим доверие наших клиентов и работаем максимально
-              открыто. Перед заключением договора наши менеджеры подробно
-              объясняют все условия аренды и отвечают на все ваши вопросы. Мы
-              гарантируем полную прозрачность всех расчетов.
-            </p>
-          </li>
         </ul>
       </section>
       <section class="reviews-section">
         <h2 class="rewievs-title">Отзывы наших клиентов</h2>
         <div class="benefits-grid">
-          <div class="benefit-card">
+          <div class="feedback-container">
+            <h2>Оставьте ваш отзыв</h2>
+            <form class="feedback-form">
+              <textarea
+                class="feedback-input"
+                placeholder="Напишите ваш отзыв здесь..."
+                rows="5"
+                required
+              ></textarea>
+              <button type="submit" class="submit-button">Отправить</button>
+            </form>
+          </div>
+          <!-- <div class="benefit-card">
             <div class="benefit-icon">👤</div>
             <h3 class="benefit-title">Александр П.</h3>
             <p class="benefit-description">
@@ -126,7 +115,7 @@
               четко, без задержек и проблем. Приятно иметь дело с
               профессионалами. Рекомендую!"
             </p>
-          </div>
+          </div> -->
         </div>
       </section>
     </main>

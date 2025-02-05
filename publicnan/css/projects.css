@@ -1,0 +1,208 @@
+button, a{
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: Jura;
+    src: url(../font/Jura.ttf);
+}
+
+@font-face {
+    font-family: Orbitron;
+    src: url(../font/Orbitron.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.home_page {
+    background-color: black;
+    height: 100%;
+    font-family: Jura;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    color: black;
+    height: 100px;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
+    padding: 0 155px;
+}
+
+header a {
+    font-family: Jura;
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+header a:not(:last-child) {
+    margin-right: 60px;
+}
+
+.content_home_page {
+    display: flex;
+    flex-direction: column;
+
+    padding: 124px 150px 0px 150px;
+    /* height: 100vh; */
+    font-family: Jura;
+}
+
+.title_home_page,
+.title_services_page {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+.content_home_page img {
+    height: 1px;
+}
+
+/* ************************************* */
+/* Ограничивающая оболочка */
+.slick-list {
+    overflow: hidden;
+}
+
+/* Лента слайдов */
+.slick-track {
+    display: flex;
+}
+
+.slider {
+    position: relative;
+    padding: 80px 500px 100px 500px;
+}
+
+/* стилизация кнопки */
+.slider .slick-arrow {
+    position: absolute;
+    top: 45%;
+    margin: 0 300px;
+    z-index: 10;
+    font-size: 0;
+    width: 50px;
+    height: 60px;
+}
+
+.slider .slick-arrow.slick-next {
+    right: 0; /* Кнопка "вперед" должна быть справа */
+    background: url('../icon/Polygon\ 2.svg') 0 0 / 100% no-repeat;
+    border: none;
+}
+
+.slider .slick-arrow.slick-prev {
+    left: 0; /* Кнопка "назад" должна быть слева */
+    background: url('../icon/Polygon\ 1.svg') 0 0 / 100% no-repeat;
+    border: none;
+}
+
+.slider .slick-arrow.slick-prev,
+.slick-arrow.slick-next:hover {
+    cursor: pointer;
+}
+
+.slider_item img {
+    cursor: pointer;
+}
+
+.services_page {
+    background-color: black;
+    font-family: Jura;
+    padding-bottom: 158px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    }
+.block_content {
+    background-color: #5A1010F7;
+    height: 530px;
+    margin-top: 76px;
+    display: flex;
+    align-items: center;
+    padding: 81px 225px;
+    position: relative;
+}
+.poz{
+position: absolute;
+right: 425px;
+}
+.poz1{
+    position: absolute;
+    right: 152px;
+    top: 190px;
+    }
+.text_content {
+    color: white;
+    font-family: Jura;
+    font-size: 32px;
+}
+
+.text_content p:not(:last-child) {
+    margin-bottom: 27px;
+}
+
+.block_content .line {
+    height: 384px;
+    margin-right: 39px;
+    border: 2px solid white;
+    width: 1px;
+}
+
+footer {
+    font-family: Jura;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 165px;
+    height: 260px;
+    border-radius: 20px 20px 0 0;
+    background-color: white;
+    width: 100%;
+}
+
+footer .logo {
+    font-size: 24px;
+}
+
+.sub_menu {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+}
+
+.line {
+    height: 190px;
+    border: 2px solid rgba(90, 16, 16, 0.97);
+    margin: 0 20px;
+}
+
+.left_menu {
+    text-align: right;
+}
+
+.wrapper {
+    background-color: black;
+}
