@@ -46,3 +46,52 @@ function closeFormOnClickOutside(e) {
       }
   });
 }
+
+
+
+
+
+
+
+// Открытие модального окна
+document.getElementById('openModal').addEventListener('click', function() {
+  document.getElementById('modal').style.display = 'flex';
+});
+
+// Закрытие модального окна
+document.querySelector('.close').addEventListener('click', function() {
+  document.getElementById('modal').style.display = 'none';
+});
+
+// Закрытие модального окна при клике вне его области
+window.addEventListener('click', function(event) {
+  if (event.target === document.getElementById('modal')) {
+    document.getElementById('modal').style.display = 'none';
+  }
+});
+
+// Переключение на форму регистрации
+document.getElementById('switchToRegister').addEventListener('click', function() {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+});
+
+// Переключение на форму авторизации
+document.getElementById('switchToLogin').addEventListener('click', function() {
+  document.getElementById('registerForm').style.display = 'none';
+  document.getElementById('loginForm').style.display = 'block';
+});
+
+// Проверка совпадения паролей
+document.getElementById('registerFormElement').addEventListener('submit', function(event) {
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const passwordError = document.getElementById('passwordError');
+
+  if (password !== confirmPassword) {
+    passwordError.style.display = 'block'; // Показываем ошибку
+    event.preventDefault(); // Отменяем отправку формы
+  } else {
+    passwordError.style.display = 'none'; // Скрываем ошибку, если пароли совпали
+  }
+});

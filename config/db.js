@@ -9,7 +9,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
         db.serialize(() => {
             // Создание таблицы для заявок
             db.run(`
-                CREATE TABLE IF NOT EXISTS applications (
+                CREATE TABLE IF NOT EXISTS requests (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
                     email TEXT NOT NULL,
@@ -49,11 +49,10 @@ const db = new sqlite3.Database('./database.db', (err) => {
 
             // Создание таблицы для отзывов
             db.run(`
-                CREATE TABLE IF NOT EXISTS reviews (
+                CREATE TABLE IF NOT EXISTS feedbacks (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT NOT NULL,
-                    text TEXT NOT NULL,
-                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                    name TEXT NOT NULL,
+                    message TEXT NOT NULL
                 );
             `)
 

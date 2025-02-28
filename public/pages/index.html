@@ -23,7 +23,13 @@
               <a href="/about">О компании</a>
             </li>
             <li><a href="/contacts">Контакты</a></li>
-            <li><a href="/profile">Личный кабинет</a></li>
+            <li>
+              <a>
+                <button id="openModal" class="open-modal-btn">
+                  Открыть модальное окно
+                </button>
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -97,6 +103,48 @@
           </div>
         </div>
       </section>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="loginForm">
+            <h2>Авторизация</h2>
+            <form id="loginFormElement">
+              <input type="text" placeholder="Логин" required />
+              <input type="password" placeholder="Пароль" required />
+              <button type="submit" class="submit-btn">Войти</button>
+            </form>
+            <button id="switchToRegister" class="switch-btn">
+              Регистрация
+            </button>
+          </div>
+          <div id="registerForm" style="display: none">
+            <h2>Регистрация</h2>
+            <form id="registerFormElement">
+              <input type="text" placeholder="Имя" required />
+              <input type="email" placeholder="Email" required />
+              <input
+                type="password"
+                id="password"
+                placeholder="Пароль"
+                required
+              />
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Повторите пароль"
+                required
+              />
+              <p id="passwordError" class="error-message" style="display: none">
+                Пароли не совпадают!
+              </p>
+              <button type="submit" class="submit-btn">
+                Зарегистрироваться
+              </button>
+            </form>
+            <button id="switchToLogin" class="switch-btn">Авторизация</button>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <div class="footer-content">
@@ -114,10 +162,6 @@
         <p class="phone">+7 (3532) 11-33-44</p>
       </div>
     </footer>
-    <script src="js/main.js"></script>
-    <script
-      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"
-      type="text/javascript"
-    ></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
