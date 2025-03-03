@@ -48,13 +48,11 @@ const db = new sqlite3.Database('./database.db', (err) => {
             `);
 
             // Создание таблицы для отзывов
-            db.run(`
-                CREATE TABLE IF NOT EXISTS feedbacks (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
-                    message TEXT NOT NULL
-                );
-            `)
+            db.run(`CREATE TABLE IF NOT EXISTS feedbacks (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                message TEXT
+            )`);
 
             // Добавление ролей по умолчанию
             db.run(`
