@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const session = require('express-session')
 // const applicationRoutes = require('./routes/applicationRoutes');
 // const authRoutes = require('./routes/authRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const db = require('./config/db');
-
+const bcrypt = require('bcrypt');
 const app = express();
 
 // Middleware
@@ -14,12 +15,81 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Настройка сессий
-// app.use(session({
-//     secret: 'your-secret-key',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false }
-// }));
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+// Регистрация
+app.post('/register', (req, res) => {
+    const { username, email, password } = req.body;
+    console.log("Данные для регистрации:", { username, email, password }); // Логирование
+
+    if (!username || !email || !password) {
+        return res.status(400).json({ success: false, message: 'Все поля обязательны' });
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    db.run('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], function (err) {
+        if (err) {
+            if (err.message.includes('UNIQUE constraint failed')) {
+                return res.status(400).json({ success: false, message: 'Пользователь с таким именем или email уже существует' });
+            }
+            console.error("Ошибка при регистрации:", err);
+            return res.status(500).json({ success: false, message: 'Ошибка при регистрации' });
+        }
+        console.log("Пользователь успешно зарегистрирован, ID:", this.lastID); // Логирование успеха
+        res.json({ success: true, userId: this.lastID });
+    });
+});
+
+// Авторизация
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).json({ success: false, message: 'Логин и пароль обязательны' });
+    }
+
+    db.get('SELECT * FROM users WHERE username = ?', [username], (err, user) => {
+        if (err || !user) {
+            return res.status(401).json({ success: false, message: 'Неверный логин или пароль' });
+        }
+
+        if (bcrypt.compareSync(password, user.password)) {
+            req.session.userId = user.id;
+            res.json({ success: true, userId: user.id });
+        } else {
+            res.status(401).json({ success: false, message: 'Неверный логин или пароль' });
+        }
+    });
+});
+
+// Проверка авторизации
+app.get('/check-auth', (req, res) => {
+    if (req.session.userId) {
+        db.get('SELECT id, username, email FROM users WHERE id = ?', [req.session.userId], (err, user) => {
+            if (err || !user) {
+                return res.status(401).json({ success: false, message: 'Пользователь не найден' });
+            }
+            res.json({ success: true, user });
+        });
+    } else {
+        res.status(401).json({ success: false, message: 'Не авторизован' });
+    }
+});
+
+// Логаут
+app.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Ошибка при выходе' });
+        }
+        res.json({ success: true });
+    });
+});
 
 // Маршруты
 // app.use('/api', applicationRoutes);

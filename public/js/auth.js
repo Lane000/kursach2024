@@ -1,93 +1,146 @@
-// Открытие попапа при нажатии на "Войти"
-document.getElementById('login-link').addEventListener('click', function(event) {
-  event.preventDefault();
-  document.getElementById('auth-popup').style.display = 'flex';
-  document.getElementById('auth-login-form').style.display = 'block';
-  document.getElementById('auth-register-form').style.display = 'none';
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginFormElement');
+    const registerForm = document.getElementById('registerFormElement');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const modal = document.getElementById('modal');
+    const closeModal = document.querySelector('.close');
+    const logoutButton = document.getElementById('logoutButton');
+    const loginLink = document.getElementById('loginLink');
 
-// Закрытие попапа при нажатии на крестик
-document.querySelector('.auth-close-popup').addEventListener('click', function() {
-  document.getElementById('auth-popup').style.display = 'none';
-});
+    // Переключение между формами авторизации и регистрации
+    switchToRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+    });
 
-// Переключение на форму регистрации
-document.getElementById('auth-show-register').addEventListener('click', function(event) {
-  event.preventDefault();
-  document.getElementById('auth-login-form').style.display = 'none';
-  document.getElementById('auth-register-form').style.display = 'block';
-});
+    switchToLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+    });
 
-// Переключение на форму авторизации
-document.getElementById('auth-show-login').addEventListener('click', function(event) {
-  event.preventDefault();
-  document.getElementById('auth-register-form').style.display = 'none';
-  document.getElementById('auth-login-form').style.display = 'block';
-});
+    // Закрытие модального окна
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
-// Обработка формы авторизации
-document.getElementById('auth-login').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const email = document.getElementById('auth-login-email').value;
-  const password = document.getElementById('auth-login-password').value;
+    // Отправка формы авторизации
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = loginForm.querySelector('input[type="text"]').value;
+        const password = loginForm.querySelector('input[type="password"]').value;
 
-  // Отправка данных на сервер
-  fetch('/auth/login', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.message === 'Авторизация успешна') {
-          document.getElementById('auth-popup').style.display = 'none';
-          location.reload();
-      } else {
-          alert('Ошибка авторизации: ' + data.message);
-      }
-  })
-  .catch(error => {
-      console.error('Ошибка:', error);
-  });
-});
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    alert(data.message);
+                }
+            });
+    });
 
-// Обработка формы регистрации
-document.getElementById('auth-register').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  const username = document.getElementById('auth-register-username').value;
-  const email = document.getElementById('auth-register-email').value;
-  const password = document.getElementById('auth-register-password').value;
-  const passwordConfirm = document.getElementById('auth-register-password-confirm').value;
-  const errorMessage = document.getElementById('auth-register-error');
+    // Отправка формы регистрации
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log("Форма регистрации отправлена"); // Отладка
 
-  // Проверка совпадения паролей
-  if (password !== passwordConfirm) {
-      errorMessage.style.display = 'block';
-      return; // Остановить выполнение функции, если пароли не совпадают
-  } else {
-      errorMessage.style.display = 'none';
-  }
+        const username = registerForm.querySelector('input[type="text"]').value;
+        const email = registerForm.querySelector('input[type="email"]').value;
+        const password = registerForm.querySelector('#password').value;
+        const confirmPassword = registerForm.querySelector('#confirmPassword').value;
 
-  // Отправка данных на сервер
-  fetch('/auth/register', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password }),
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.message === 'Пользователь зарегистрирован') {
-          document.getElementById('auth-popup').style.display = 'none';
-      } else {
-          alert('Ошибка регистрации: ' + data.message);
-      }
-  })
-  .catch(error => {
-      console.error('Ошибка:', error);
-  });
+        console.log("Данные формы:", { username, email, password, confirmPassword }); // Логирование
+
+        if (password !== confirmPassword) {
+            document.getElementById('passwordError').style.display = 'block';
+            return; // Остановить выполнение, если пароли не совпадают
+        }
+
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Показываем сообщение об успешной регистрации
+                    document.getElementById('registrationSuccess').style.display = 'block';
+
+                    // Перезагружаем страницу через 2 секунды
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Ошибка при отправке запроса:", error);
+            });
+        if (data.success) {
+            document.getElementById('registrationSuccess').style.display = 'block';
+            registerForm.reset(); // Очистка формы
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+    });
+
+    // Проверка авторизации при загрузке страницы
+    fetch('/check-auth')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Показываем контент личного кабинета
+                document.querySelector('.profile-content').style.display = 'block';
+                document.querySelector('.profile-header h1').textContent = `Добро пожаловать, ${data.user.username}`;
+
+                // Показываем кнопку "Выйти"
+                logoutButton.style.display = 'block';
+
+                // Скрываем надпись "Войти"
+                loginLink.style.display = 'none';
+            } else {
+                // Показываем надпись "Войти"
+                loginLink.style.display = 'block';
+
+                // Скрываем кнопку "Выйти"
+                logoutButton.style.display = 'none';
+
+                // Показываем модальное окно авторизации
+                modal.style.display = 'flex';
+            }
+        });
+
+    // Обработка выхода из системы
+    logoutButton.addEventListener('click', () => {
+        fetch('/logout', {
+            method: 'POST',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                }
+            });
+    });
+
+    // Обработка клика на "Войти"
+    loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+    });
 });

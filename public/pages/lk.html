@@ -38,24 +38,21 @@
                   <div class="info-grid">
                     <div class="info-item">
                       <span class="label">ФИО:</span>
-                      <span class="value">Петров Иван Владимирович</span>
+                      <span class="value" id="name"
+                        >Петров Иван Владимирович</span
+                      >
                     </div>
                     <div class="info-item">
                       <span class="label">Email:</span>
-                      <span class="value">petrovivan@mail.ru</span>
-                    </div>
-                    <div class="info-item">
-                      <span class="label">Телефон:</span>
-                      <span class="value">+7 (922) 645-45-97</span>
+                      <span class="value" id="email">petrovivan@mail.ru</span>
                     </div>
                   </div>
-                </div>
-                <div class="profile-photo">
-                  <img src="img/profile.jpg" alt="Фото профиля" />
                 </div>
               </div>
             </div>
           </div>
+          <button id="logoutButton">Выйти</button>
+          <a href="#" id="loginLink" style="display: none">Войти</a>
         </div>
       </main>
     </div>
@@ -92,6 +89,13 @@
               Пароли не совпадают!
             </p>
             <button type="submit" class="submit-btn">Зарегистрироваться</button>
+            <p
+              id="registrationSuccess"
+              class="success-message"
+              style="display: none; color: green"
+            >
+              Регистрация прошла успешно!
+            </p>
           </form>
           <button id="switchToLogin" class="switch-btn">Авторизация</button>
         </div>
@@ -113,6 +117,7 @@
         <p class="phone">+7 (3532) 11-33-44</p>
       </div>
     </footer>
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
