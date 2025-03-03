@@ -91,6 +91,21 @@ app.post('/logout', (req, res) => {
     });
 });
 
+app.get('/user-info', (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ success: false, message: 'Пользователь не авторизован' });
+    }
+
+    const userId = req.session.userId;
+
+    db.get('SELECT username, email FROM users WHERE id = ?', [userId], (err, user) => {
+        if (err || !user) {
+            return res.status(500).json({ success: false, message: 'Ошибка при получении данных пользователя' });
+        }
+        res.json({ success: true, user });
+    });
+});
+
 // Маршруты
 // app.use('/api', applicationRoutes);
 app.use('/api', reviewRoutes);

@@ -104,24 +104,40 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                // Пользователь авторизован, получаем его данные
+                fetch('/user-info')
+                    .then(response => response.json())
+                    .then(userData => {
+                        if (userData.success) {
+                            // Обновляем данные на странице
+                            document.getElementById('name').textContent = userData.user.username;
+                            document.getElementById('email').textContent = userData.user.email;
+                        } else {
+                            console.error("Ошибка при получении данных пользователя:", userData.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Ошибка при запросе данных пользователя:", error);
+                    });
+
                 // Показываем контент личного кабинета
                 document.querySelector('.profile-content').style.display = 'block';
                 document.querySelector('.profile-header h1').textContent = `Добро пожаловать, ${data.user.username}`;
 
                 // Показываем кнопку "Выйти"
-                logoutButton.style.display = 'block';
+                document.getElementById('logoutButton').style.display = 'block';
 
                 // Скрываем надпись "Войти"
-                loginLink.style.display = 'none';
+                document.getElementById('loginLink').style.display = 'none';
             } else {
                 // Показываем надпись "Войти"
-                loginLink.style.display = 'block';
+                document.getElementById('loginLink').style.display = 'block';
 
                 // Скрываем кнопку "Выйти"
-                logoutButton.style.display = 'none';
+                document.getElementById('logoutButton').style.display = 'none';
 
                 // Показываем модальное окно авторизации
-                modal.style.display = 'flex';
+                document.getElementById('modal').style.display = 'flex';
             }
         });
 
