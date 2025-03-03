@@ -42,11 +42,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form method="POST" class="form-container">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -76,11 +72,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form method="POST" class="form-container">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -110,11 +102,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form method="POST" class="form-container">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -140,11 +128,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form method="POST" class="form-container">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -170,11 +154,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form method="POST" class="form-container">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -200,11 +180,7 @@
                 Забронировать
               </button>
               <div class="form-popup" id="myForm1" style="display: none">
-                <form
-                  action="process_booking.php"
-                  method="POST"
-                  class="form-container"
-                >
+                <form class="form-container" id="bookingForm">
                   <h1 class="title-form-gast">Забронировать</h1>
                   <div class="tele-gast">
                     <label for="phone"><b>Телефон</b></label>
@@ -315,6 +291,35 @@
         <p class="phone">+7 (3532) 11-33-44</p>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+      // Открытие формы
+      function openForm(formId) {
+        document.getElementById(formId).style.display = "block";
+      }
+
+      // Закрытие формы
+      function closeForm(formId) {
+        document.getElementById(formId).style.display = "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const bookingForm = document.getElementById("bookingForm");
+
+        // Обработчик отправки формы
+        bookingForm.addEventListener("submit", function (event) {
+          event.preventDefault(); // Предотвращаем отправку формы на сервер
+
+          // Закрываем форму
+          const formPopup = document.querySelector(".form-popup");
+          formPopup.style.display = "none";
+
+          // Показываем сообщение об успешной отправке
+          alert(
+            "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время."
+          );
+        });
+      });
+    </script>
   </body>
 </html>
